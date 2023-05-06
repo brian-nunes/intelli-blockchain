@@ -1,6 +1,9 @@
-import Connect from '@/components/Connect'
+import IndexPage from '@/components/IndexPage'
+import PollCard from '@/components/PollCard'
+import PollsPage from '@/components/PollsPage'
+import ProductsPage from '@/components/ProductsPage'
+import UserPage from '@/components/UserPage'
 import Head from 'next/head'
-import { Button, Card } from 'react-bootstrap'
 
 
 export default function Home() {
@@ -13,7 +16,13 @@ export default function Home() {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"></link>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Connect />
+      <h1>
+        <UserPage />
+        <br></br>
+        <PollsPage />
+        <br></br>
+        <PollCard />
+      </h1>
     </div>
   )
 }
