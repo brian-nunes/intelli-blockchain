@@ -5,7 +5,7 @@ const PollsPage = () => {
     <div>
       <div>PollsPage</div>
       <h1>Pool 1</h1>
-      <p>Short discription</p>
+      <p>Short description</p>
     </div>
   )
 }
