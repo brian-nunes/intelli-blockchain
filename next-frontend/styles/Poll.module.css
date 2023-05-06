@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 2rem; /* Add top padding */
+  background-color: #f4f4f4;
+}
+
+.poll {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 100%;
+}
+
+.poll h1 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.poll p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lastVoters {
+  margin-top: 1rem;
+}
+
+.lastVoters h3 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.lastVoters ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lastVoters li {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}

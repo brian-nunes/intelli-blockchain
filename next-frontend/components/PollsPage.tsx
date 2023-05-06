@@ -1,11 +1,11 @@
 import React from 'react';
-import PollCard from './PollCard';
+import PollCards from './PollCards';
 
 const PollsPage: React.FC = () => {
   return (
     <div>
       <h1>Polls</h1>
-      <PollCard />
+      <PollCards />
     </div>
   );
 };
