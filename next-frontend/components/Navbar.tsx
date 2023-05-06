@@ -2,18 +2,20 @@ import React from 'react';
 import Link from 'next/link';
 
 const Navbar: React.FC = () => {
+  const handleBackClick = () => {
+    if (typeof window !== 'undefined') {
+      window.history.back();
+    }
+  };
+
   return (
     <nav>
       <ul>
         <li>
-          <Link href="/polls">
-            <span>Polls</span>
-          </Link>
+          <Link href="/poll"><span>Polls</span></Link>
         </li>
         <li>
-          <Link href="/users">
-            <span>Users</span>
-          </Link>
+          <Link href="/user"><span>User</span></Link>
         </li>
       </ul>
     </nav>

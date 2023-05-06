@@ -27,7 +27,7 @@ const PollCards: React.FC = () => {
   ];
 
   const handleClick = (poll_id: number) => {
-    router.replace('/poll/' + poll_id);
+    router.push('/poll/' + poll_id);
   };
 
   return (

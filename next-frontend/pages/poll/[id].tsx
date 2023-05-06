@@ -1,15 +1,14 @@
 import React from 'react';
 import PollPage from '@/components/PollPage';
-import Navbar from '@/components/NavBar';
+import Layout from '@/components/Layout';
 
 const PollPageRoute: React.FC = () => {
 
-  return (<div className="container">
-    <Navbar />
-    <main>
-    <PollPage />
-    </main>
-  </div>)
+  return (
+    <Layout>
+      <PollPage />
+    </Layout>
+  )
 };
 
 export default PollPageRoute;
