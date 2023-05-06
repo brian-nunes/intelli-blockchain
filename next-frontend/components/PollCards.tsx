@@ -13,6 +13,12 @@ const PollCards: React.FC = () => {
 
   const mockPollData: PollData[] = [
     {
+      user_id: 0,
+      title: 'Create Poll',
+      description: 'Create a new poll.',
+      createdBy: 'You',
+    },
+    {
       user_id: 1,
       title: 'Best Programming Language',
       description: 'Vote for your favorite programming language.',
@@ -27,7 +33,11 @@ const PollCards: React.FC = () => {
   ];
 
   const handleClick = (poll_id: number) => {
-    router.push('/poll/' + poll_id);
+    if (poll_id === 0) {
+      router.push('/create-poll');
+    } else {
+      router.push('/poll/' + poll_id);
+    }
   };
 
   return (
