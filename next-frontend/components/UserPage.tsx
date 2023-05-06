@@ -1,14 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const UserPage = () => {
+const UserPage: React.FC = () => {
   return (
     <div>
-        <h1>User name</h1>
-        <h2>Avaliable to stake</h2>
-        <h2>Stake ammout</h2>
-        <input type='number' step='any' />
+      <h1>Users</h1>
+      {/* Render user content here */}
     </div>
-  )
-}
+  );
+};
 
-export default UserPage
+export default UserPage;

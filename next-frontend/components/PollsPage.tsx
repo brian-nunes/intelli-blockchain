@@ -1,13 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const PollsPage = () => {
+const PollsPage: React.FC = () => {
   return (
     <div>
-      <div>PollsPage</div>
-      <h1>Pool 1</h1>
-      <p>Short description</p>
+      <h1>Polls</h1>
+      {/* Render polls content here */}
     </div>
-  )
-}
+  );
+};
 
-export default PollsPage
+export default PollsPage;
