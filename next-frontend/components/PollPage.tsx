@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import styles from '@/styles/Poll.module.css';
 
 const PollPage: React.FC = () => {
   const router = useRouter();
@@ -19,13 +18,13 @@ const PollPage: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.poll}>
+    <div>
+      <div>
         <h1>{mockPollData.title}</h1>
         <p>Description: {mockPollData.description}</p>
         <p>Created By: {mockPollData.createdBy}</p>
         <p>Poll ID: {id}</p>
-        <div className={styles.lastVoters}>
+        <div>
           <h3>Last voters:</h3>
           <ul>
             {mockPollData.lastVoters.map((voter) => (
