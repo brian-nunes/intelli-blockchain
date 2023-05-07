@@ -24,6 +24,7 @@ This project is a decentralized governance system built on Ethereum using the Et
 - `model`: Contains the trained model files.
 - `crypto-lstm.ipynb | crypto-lstm.py`: Pre-processes the data and trains an individual Neural Network (Long Short-Term Memory) for each crypto asset being analyzed.
 - `predict-and-suggest.ipynb | predict-and-suggest.py`: Predicts prices for the next {pred_timespan} days and suggests asset distribution through the DAO
+- This crypto assets advisor is based on the paper: Fleischer, J.P.; von Laszewski, G.; Theran, C.; Parra Bautista, Y.J. Time Series Analysis of Cryptocurrency Prices Using Long Short-Term Memory. Algorithms 2022, 15, 230. https://doi.org/10.3390/a15070230
 
 ## Getting Started
 
