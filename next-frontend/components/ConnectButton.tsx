@@ -1,21 +1,7 @@
 import useMetaMask from "@/contexts/MetaMaskProvider";
-import { useEffect, useState } from "react";
 
 const ConnectButton: React.FC = () => {
-    const { isConnected, connect, provider, signer } = useMetaMask();
-    const [address, setAddress] = useState<String>('')
-
-    let fetchData = async () => {
-        if(!signer) return
-
-        let address_temp = await signer?.getAddress()
-        console.log(address_temp)
-        setAddress(address_temp ? address_temp : '')
-    }
-
-    useEffect(() => {
-        fetchData()
-      });
+    const { isConnected, address, connect } = useMetaMask();
 
     if (!isConnected) {
         return (<button className='button' onClick={connect}>Conectar</button>)

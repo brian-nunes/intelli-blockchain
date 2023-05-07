@@ -1,35 +1,32 @@
-import React from 'react';
+import useMetaMask from '@/contexts/MetaMaskProvider';
+import React, { useEffect, useState } from 'react';
 
 const UserPage: React.FC = () => {
-  const mockWalletData = [
-    {
-      walletAddress: '0x12345abcde...',
-      stakedAmount: 120,
-      stakingPool: 'Lido',
-      rewardAmount: 3.5,
-    },
-    {
-      walletAddress: '0x67890fghij...',
-      stakedAmount: 50,
-      stakingPool: 'Lido',
-      rewardAmount: 1.2,
-    },
-  ];
+  const {getAccounts, balanceOf} = useMetaMask()
+  const [accounts, setAccounts] = useState<Array<{account: string, balance: number}>>([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const accounts_list = await getAccounts();
+      const accounts_structure: Array<{account: string, balance: number}> = [];
+      accounts_list.forEach(async (account) => {
+        const balance = await balanceOf(account);
+        accounts_structure.push({account, balance})
+      });
+      setAccounts(accounts_structure)
+    }
+    fetchData();
+  }, []);
 
   return (
     <div>
       <h1>Users</h1>
       <div className="wallet-cards">
-        {mockWalletData.map((wallet, index) => (
+        {accounts.map((account, index) => (
           <div key={index} className="wallet-card">
             <h3>Wallet Address</h3>
-            <p>{wallet.walletAddress}</p>
+            <p>{account.account}</p>
             <h3>Staked Amount</h3>
-            <p>{wallet.stakedAmount}</p>
-            <h3>Staking Pool</h3>
-            <p>{wallet.stakingPool}</p>
-            <h3>Reward Amount</h3>
-            <p>{wallet.rewardAmount}</p>
+            <p>{account.balance}</p>
           </div>
         ))}
       </div>

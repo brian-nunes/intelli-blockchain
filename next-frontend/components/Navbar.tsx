@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { MetaMaskProvider } from '@/contexts/MetaMaskProvider';
 import ConnectButton from '@/components/ConnectButton';
 
 const Navbar: React.FC = () => {
