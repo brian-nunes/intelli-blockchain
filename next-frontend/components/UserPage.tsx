@@ -1,5 +1,5 @@
-import useMetaMask from '@/contexts/MetaMaskProvider';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import WalletCard from './WalletCard';
 
 const UserPage: React.FC = () => {
   const {getAccounts, balanceOf} = useMetaMask()
@@ -21,12 +21,16 @@ const UserPage: React.FC = () => {
     <div>
       <h1>Users</h1>
       <div className="wallet-cards">
-        {accounts.map((account, index) => (
+        {mockWalletData.map((wallet, index) => (
           <div key={index} className="wallet-card">
             <h3>Wallet Address</h3>
-            <p>{account.account}</p>
+            <p>{wallet.walletAddress}</p>
             <h3>Staked Amount</h3>
-            <p>{account.balance}</p>
+            <p>{wallet.stakedAmount}</p>
+            <h3>Staking Pool</h3>
+            <p>{wallet.stakingPool}</p>
+            <h3>Reward Amount</h3>
+            <p>{wallet.rewardAmount}</p>
           </div>
         ))}
       </div>
