@@ -8,7 +8,7 @@ interface CryptoData {
   DOGE: number;
 }
 
-const CryptoCard: React.FC = () => {
+export const CryptoCard: React.FC = () => {
   const [cryptoData, setCryptoData] = useState<CryptoData>();
 
   useEffect(() => {
@@ -37,5 +37,3 @@ const CryptoCard: React.FC = () => {
     </div>
   );
 };
-
-export default CryptoCard;
