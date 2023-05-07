@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
           <Link href="/user"><span>User</span></Link>
         </li>
         <li>
-          <MetaMaskProvider><ConnectButton /></MetaMaskProvider>
+          <ConnectButton />
         </li>
       </ul>
     </nav>

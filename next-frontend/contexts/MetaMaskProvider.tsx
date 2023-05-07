@@ -8,11 +8,15 @@ declare global {
 interface MetaMaskContextProps {
   isConnected: boolean,
   connect: () => void,
+  signer: ethers.Signer | undefined,
+  provider: ethers.Provider | undefined
 }
 
 export const MetaMaskContext = createContext<MetaMaskContextProps>({
   isConnected: false,
   connect: () => { },
+  signer: undefined,
+  provider: undefined,
 });
 
 export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -23,7 +27,8 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
   const fetchData = async () => {
     let provider_temp = new ethers.BrowserProvider(window.ethereum)
     let signer_temp = await provider_temp.getSigner();
-
+    
+    setIsConnected(true)
     setProvider(provider_temp)
     setSigner(signer_temp)
   }
@@ -33,7 +38,7 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
   }
 
   return (
-    <MetaMaskContext.Provider value={{ isConnected, connect }}>
+    <MetaMaskContext.Provider value={{ isConnected, connect, provider, signer }}>
       {children}
     </MetaMaskContext.Provider>
   );
