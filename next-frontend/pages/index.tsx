@@ -1,15 +1,13 @@
-import IndexPage from '@/components/IndexPage';
 import Layout from '@/components/Layout';
-import UserPage from '@/components/UserPage';
+import IndexPage from '@/components/IndexPage';
 
 
-const Home: React.FC = () => {
-
+export default function Home() {
   return (
-    <Layout>
-      <IndexPage />
-    </Layout>
+    <>
+      <Layout>
+        <IndexPage />
+      </Layout>
+    </>
   );
-};
-
-export default Home;
+}
