@@ -3,9 +3,8 @@ import { useRouter } from 'next/router';
 
 interface PollData {
   user_id: number;
-  title: string;
   description: string;
-  createdBy: string;
+  votesNumber: number;
 }
 
 const PollCards: React.FC = () => {
@@ -14,17 +13,19 @@ const PollCards: React.FC = () => {
   const mockPollData: PollData[] = [
     {
       user_id: 1,
-      title: 'Best Programming Language',
       description: 'Vote for your favorite programming language.',
-      createdBy: 'Alice',
+      votesNumber: 15,
     },
     {
       user_id: 2,
-      title: 'Preferred Mobile OS',
       description: 'Which mobile operating system do you prefer?',
-      createdBy: 'Bob',
+      votesNumber: 7,
     },
   ];
+
+  const handleCreateNewPoll = () => {
+    router.push('/poll/new/');
+  };
 
   const handleClick = (poll_id: number) => {
     router.push('/poll/' + poll_id);
@@ -32,15 +33,20 @@ const PollCards: React.FC = () => {
 
   return (
     <div className="poll-cards">
+      <div
+        className="poll-card create-poll-card"
+        onClick={handleCreateNewPoll}
+      >
+        <p>Create new Poll</p>
+      </div>
       {mockPollData.map((poll, index) => (
         <div
           key={index}
           className="poll-card"
           onClick={() => handleClick(poll.user_id)}
         >
-          <h3>{poll.title}</h3>
           <p>Description: {poll.description}</p>
-          <p>Created By: {poll.createdBy}</p>
+          <p className="vote-count">Number of Votes: {poll.votesNumber}</p>
         </div>
       ))}
     </div>
