@@ -29,16 +29,12 @@ const WalletCard: React.FC<WalletCardProps> = ({ walletAddress, stakedAmount, st
       <p>{stakingPool}</p>
       <h3>Reward Amount</h3>
       <p>{rewardAmount}</p>
-      <label>
-        Stake Amount:
+      <h3>Stake Amount:</h3>
         <input type="number" value={stakeAmount} onChange={(e) => setStakeAmount(parseFloat(e.target.value))} />
-      </label>
-      <button onClick={handleStake}>Stake</button>
-      <label>
-        Unstake Amount:
+        <button className="light" onClick={handleStake}>Stake</button>
+      <h3>Unstake Amount:</h3>
         <input type="number" value={unstakeAmount} onChange={(e) => setUnstakeAmount(parseFloat(e.target.value))} />
-      </label>
-      <button onClick={handleUnstake}>Unstake</button>
+      <button className="light" onClick={handleUnstake}>Unstake</button>
     </div>
   );
 };
