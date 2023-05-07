@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import WalletCard from './WalletCard';
+import useMetaMask from '@/contexts/MetaMaskProvider';
 
 const UserPage: React.FC = () => {
   const {getAccounts, balanceOf} = useMetaMask()
   const [accounts, setAccounts] = useState<Array<{account: string, balance: number}>>([])
+  
   useEffect(() => {
     const fetchData = async () => {
       const accounts_list = await getAccounts();
@@ -21,17 +23,8 @@ const UserPage: React.FC = () => {
     <div>
       <h1>Users</h1>
       <div className="wallet-cards">
-        {mockWalletData.map((wallet, index) => (
-          <div key={index} className="wallet-card">
-            <h3>Wallet Address</h3>
-            <p>{wallet.walletAddress}</p>
-            <h3>Staked Amount</h3>
-            <p>{wallet.stakedAmount}</p>
-            <h3>Staking Pool</h3>
-            <p>{wallet.stakingPool}</p>
-            <h3>Reward Amount</h3>
-            <p>{wallet.rewardAmount}</p>
-          </div>
+        {accounts.map((account, index) => (
+          <WalletCard key={index} stakedAmount={account.balance} walletAddress={account.account}/>
         ))}
       </div>
     </div>

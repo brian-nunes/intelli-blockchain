@@ -1,5 +1,5 @@
 export const governance_contract_data = {
-    address: '0x48599b7fF44Aa32AaE5ceC639c975C68Ae28Dd6e',
+    address: '0xB5AF9E0676A850161e3792C2c9f99EC5feFd5b28',
     abi: [
         {
             "inputs": [
@@ -1095,7 +1095,7 @@ export const governance_contract_data = {
 }
 
 export const governance_token_data = {
-    address: '0x94AACFE0F880f07aA7aB4a97392B3691628AbD52',
+    address: '0xA6D360b60B767Ae9BA9439fE4641f234AC18E552',
     abi: [
         {
             "inputs": [],

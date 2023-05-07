@@ -1,7 +1,6 @@
 import { AbiCoder, BrowserProvider, Contract, ethers } from 'ethers';
 import React, { createContext, useState, ReactNode, useContext } from 'react';
 import { governance_contract_data, governance_token_data } from '../solidity_data'
-import { sign } from 'crypto';
 
 declare global {
   interface Window { ethereum: any; }
@@ -41,8 +40,16 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
 
-  let governor_contract: Contract;
-  let token_contract: Contract;
+  const BTG_DOL_ADDRESS = "0x0172ae13E3583BF565957095D27caede3Abb172e";
+
+  const getContracts = async () => {
+    let provider: BrowserProvider = new ethers.BrowserProvider(window.ethereum)
+    let signer: ethers.JsonRpcSigner = await provider.getSigner();
+    let governor_contract = new ethers.Contract(governance_contract_data.address, governance_contract_data.abi, signer);
+    let token_contract = new ethers.Contract(governance_token_data.address, governance_token_data.abi, signer);
+    let btg_dol_contract = new ethers.Contract(BTG_DOL_ADDRESS, governance_token_data.abi, signer);
+    return {governor_contract, token_contract, btg_dol_contract}
+  }
 
   const connect = async () => {
     let provider: BrowserProvider = new ethers.BrowserProvider(window.ethereum)
@@ -50,16 +57,16 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
     
     setIsConnected(true);
     setAddress(signer.address);
-
-    governor_contract = new ethers.Contract(governance_contract_data.address, governance_contract_data.abi, signer);
-    token_contract = new ethers.Contract(governance_token_data.address, governance_token_data.abi, signer);
   }
 
-  const balanceOf = async (address: string): Promise<number> => {
-    return await token_contract.balanceOf(address);
+  const balanceOf = async (account: string): Promise<number> => {
+    const {token_contract} = await getContracts();
+    console.log(token_contract);
+    return await token_contract.balanceOf(account);
   }
 
   const proposalVotes = async (proposalId: string): Promise<Array<number>> => {
+    const {governor_contract} = await getContracts();
     return await governor_contract.proposalVotes(proposalId);
   }
 
@@ -68,10 +75,13 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
   }
 
   const stake = async (amount: number) => {
+    const {token_contract, btg_dol_contract} = await getContracts();
+    await btg_dol_contract.approve(governance_token_data.address, amount);
     return await token_contract.stake(amount);
   }
 
   const unstake = async (amount: number) => {
+    const {token_contract} = await getContracts();
     return await token_contract.unstake(amount);
   }
 
@@ -80,6 +90,7 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
     const abi = AbiCoder.defaultAbiCoder()
     const transferCalldata = abi.encode([pollData.selectedFunction], [pollData.inputValue]);
 
+    const {governor_contract} = await getContracts();
     await governor_contract.propose(
       [tokenAddress],
       [0],

@@ -1,22 +1,23 @@
+import useMetaMask from '@/contexts/MetaMaskProvider';
 import React, { useState } from 'react';
 
 interface WalletCardProps {
   walletAddress: string;
   stakedAmount: number;
-  stakingPool: string;
-  rewardAmount: number;
 }
 
-const WalletCard: React.FC<WalletCardProps> = ({ walletAddress, stakedAmount, stakingPool, rewardAmount }) => {
+const WalletCard: React.FC<WalletCardProps> = ({ walletAddress, stakedAmount }) => {
   const [stakeAmount, setStakeAmount] = useState<number>(0);
   const [unstakeAmount, setUnstakeAmount] = useState<number>(0);
 
-  const handleStake = () => {
-    // code to handle stake action
+  const {stake, unstake} = useMetaMask()
+
+  const handleStake = async () => {
+    await stake(stakeAmount);
   };
 
-  const handleUnstake = () => {
-    // code to handle unstake action
+  const handleUnstake = async () => {
+    await unstake(unstakeAmount);
   };
 
   return (
@@ -25,10 +26,7 @@ const WalletCard: React.FC<WalletCardProps> = ({ walletAddress, stakedAmount, st
       <p>{walletAddress}</p>
       <h3>Staked Amount</h3>
       <p>{stakedAmount}</p>
-      <h3>Staking Pool</h3>
-      <p>{stakingPool}</p>
-      <h3>Reward Amount</h3>
-      <p>{rewardAmount}</p>
+
       <h3>Stake Amount:</h3>
         <input type="number" value={stakeAmount} onChange={(e) => setStakeAmount(parseFloat(e.target.value))} />
         <button className="light" onClick={handleStake}>Stake</button>
