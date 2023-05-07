@@ -61,6 +61,9 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   const balanceOf = async (account: string): Promise<number> => {
     const {token_contract} = await getContracts();
+    if(!token_contract) 
+      return 0
+
     console.log(token_contract);
     return await token_contract.balanceOf(account);
   }
@@ -88,7 +91,7 @@ export const MetaMaskProvider: React.FC<{ children: ReactNode }> = ({ children }
   const propose = async (pollData: PollData) => {
     const tokenAddress = pollData.selectedFunction === 'setStakeLimit' ? governance_token_data.address : governance_contract_data.address;
     const abi = AbiCoder.defaultAbiCoder()
-    const transferCalldata = abi.encode([pollData.selectedFunction], [pollData.inputValue]);
+    const transferCalldata = '';
 
     const {governor_contract} = await getContracts();
     await governor_contract.propose(
