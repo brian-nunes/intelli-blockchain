@@ -18,13 +18,13 @@ const PollPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className='poll-container'>
+      <div className='poll'>
         <h1>{mockPollData.title}</h1>
         <p>Description: {mockPollData.description}</p>
         <p>Created By: {mockPollData.createdBy}</p>
         <p>Poll ID: {id}</p>
-        <div>
+        <div className='lastVoters'>
           <h3>Last voters:</h3>
           <ul>
             {mockPollData.lastVoters.map((voter) => (
