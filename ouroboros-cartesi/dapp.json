@@ -1,0 +1,5 @@
+{
+  "fs": {
+    "files": ["ouroboros.py", "entrypoint.sh"]
+  }
+}
