@@ -368,3 +368,75 @@ input {
       box-shadow: rgb(231 238 236) 0px 0px 0px 3px;
   }
 }
+
+.crypto-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  max-width: 300px;
+  margin: 1rem auto;
+}
+
+.crypto-card h2 {
+  margin-bottom: 1rem;
+}
+
+.crypto-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.crypto-card li {
+  margin-bottom: 0.5rem;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-content {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.App-features {
+  max-width: 300px;
+  text-align: left;
+  margin: 1rem;
+}
+
+.App-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.App-intro,
+.App-features {
+  padding: 2rem;
+  text-align: left;
+}
+
+.App-intro p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.App-features h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.App-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.App-features li {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
