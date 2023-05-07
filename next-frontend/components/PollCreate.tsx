@@ -23,7 +23,7 @@ const PollCreate: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='poll-create'>
       <h1>Create Poll</h1>
       <form onSubmit={handleSubmit}>
         <label>
