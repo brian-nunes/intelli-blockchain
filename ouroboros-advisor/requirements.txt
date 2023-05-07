@@ -1,0 +1,12 @@
+keras
+tensorflow
+pandas
+sklearn
+numpy
+matplotlib
+jupyter
+jupyter_contrib_nbextensions
+yfinance
+pathlib
+pydot
+graphviz
