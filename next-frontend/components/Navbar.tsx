@@ -4,11 +4,6 @@ import { MetaMaskProvider } from '@/contexts/MetaMaskProvider';
 import ConnectButton from '@/components/ConnectButton';
 
 const Navbar: React.FC = () => {
-  const handleBackClick = () => {
-    if (typeof window !== 'undefined') {
-      window.history.back();
-    }
-  };
 
   return (
     <nav>
